@@ -1,6 +1,6 @@
 import datetime, json, requests, sys
 
-#GET STATION
+#GET STATIONKC
 if len(sys.argv) < 2:
     dest = input("Station: ")
 else:
