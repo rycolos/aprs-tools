@@ -1,5 +1,9 @@
 import os, socket, sys, textwrap, yaml
 
+"""
+todo - add error checking
+"""
+
 config_path = 'config.yaml'
 
 def get_inputs():
