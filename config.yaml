@@ -1,0 +1,12 @@
+# callsign - your station callsign
+# aprs_passcode - see https://apps.magicbug.co.uk/passcode/
+# server_host - choose local server, see http://www.aprs-is.net/APRSServers.aspx
+# server_port = 14580, defined in aprs-is spec, you probably won't want to change this
+
+your_station_info:
+    callsign: KC1QBY-1
+    aprs_passcode: 19369
+
+aprs_server:
+    server_host: noam.aprs2.net
+    server_port: 14580
