@@ -7,6 +7,7 @@ todo - error checking
 config_path = 'config.yaml'
 url = 'https://api.aprs.fi/api/get?'
 
+
 def get_inputs():
     """
     get inputs - target station
@@ -16,6 +17,7 @@ def get_inputs():
     else:
         dest = sys.argv[1]
     return dest
+
 
 def config_parse(config_path):
     """
@@ -28,6 +30,7 @@ def config_parse(config_path):
     api_key = config_file['aprs_fi']['api_key']
     return api_key
 
+
 def api_read(url, dest, api_key):
     """
     construct query params, read from aprs.fi api
@@ -37,6 +40,7 @@ def api_read(url, dest, api_key):
     data = resp.json()
     entries = data.get('entries')
     return entries
+
 
 def tz_convert(entries):
     """
@@ -48,6 +52,7 @@ def tz_convert(entries):
     ts_lasttime = int(entries[0].get('lasttime'))
     entries[0]['lasttime'] = datetime.datetime.fromtimestamp(ts_lasttime).strftime('%Y-%m-%d %H:%M:%S')
 
+
 def main():
     dest = get_inputs()
     api_key = config_parse(config_path)
@@ -56,6 +61,7 @@ def main():
     
     for key,value in entries[0].items():
         print(key,value)
+
 
 if __name__ == "__main__":
     main()

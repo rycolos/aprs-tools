@@ -1,11 +1,15 @@
 import datetime, json, os, requests, sys, yaml
 
 """
-todo - error checking
+todo
+add error checking
+what are the likely error states?
+config file not found, bad config file, api bad token
 """
 
 config_path = 'config.yaml'
 url = 'https://api.aprs.fi/api/get?'
+
 
 def get_inputs():
     """
@@ -16,6 +20,7 @@ def get_inputs():
     else:
         dest = sys.argv[1]
     return dest
+
 
 def config_parse(config_path):
     """
@@ -28,6 +33,7 @@ def config_parse(config_path):
     api_key = config_file['aprs_fi']['api_key']
     return api_key
 
+
 def api_read(url, dest, api_key):
     """
     construct query params, read from aprs.fi api
@@ -39,6 +45,7 @@ def api_read(url, dest, api_key):
     count = data.get('found')
     return entries, count
 
+
 def tz_convert(entries):
     """
     convert unix ts to local tz
@@ -46,6 +53,7 @@ def tz_convert(entries):
     for item in entries:
         ts = int(item['time'])
         item['time'] = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
+
 
 def main():
     dest = get_inputs()
@@ -56,6 +64,7 @@ def main():
     print("Displaying", count, "most recent messages.\n")
     for item in entries:
         print(item)
+
 
 if __name__ == "__main__":
     main()
