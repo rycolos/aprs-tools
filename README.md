@@ -1,4 +1,5 @@
 # APRS-tools
+aprs-tools is a small collection of scripts that enable cli input and output from the Automatic Packet Reporting System-Internet Service (APRS-IS). Functions include: (1) enabling a station to send a message via an APRS-IS server directly to another station; (2) querying a station for its latest location and other station data; and (3) querying a station's most recent 10 messages.
 ## Installation
 Requires Python 3. See requirements.txt for other dependencies.
 
