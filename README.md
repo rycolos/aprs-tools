@@ -19,17 +19,16 @@ Install dependencies:
 ```
 pip3 install -r requirements.txt
 ```
-## Using aprs-tools
-### Configuration
+## Configuration
 Rename `config.yaml.template` to `config.yaml` and add the relevant values.
 * *callsign* - Your station callsign. Used as the sending station in `aprs_sender`.
 * *aprs_passcode* - Your stations' APRS-IS passcode. See <https://apps.magicbug.co.uk/passcode/> to generate a passcode if you do not have one already. Used in `aprs_sender`.
 * *server_host* - Your local APRS-IS server. See <http://www.aprs-is.net/APRSServers.aspx> for a list of servers. Used in `aprs_sender`.
 * *server_port* - APRS-IS server port. 14580 is defined in the APRS-IS spec. You probably won't want to change this. Used in `aprs_sender`.
 * *api_key* - API key for aprs.fi. Requires an aprs.fi account. See <https://aprs.fi/page/api>. Used in `aprs_query` and `aprs_msg_check`.
-### aprs-sender
+## aprs-sender
 Send a message via an APRS-IS server to a destination APRS station.
-#### Usage
+### Usage
 Requires destination state and message. These can be either passed as a parameter when running the script or via interactive input.
 ```
 > python3 aprs_sender.py KC1QBY-1 test message
@@ -38,7 +37,7 @@ Requires destination state and message. These can be either passed as a paramete
 Destination Station: KC1QBY-1
 Message: test message
 ```
-#### Example
+### Example
 ```
 > python3 aprs_sender.py
 Destination Station: KC1QBY-1
@@ -55,9 +54,9 @@ Received: # logresp KC1QBY-1 verified, server T2VAN
 
 Connection Closed
 ```
-### aprs_query
+## aprs_query
 Query aprs.fi for basic station information.
-#### Usage
+### Usage
 Requires target station. This can be either passed as a parameter when running the script or via an interactive input.
 ```
 > python3 aprs_query.py KC1QBY-1
@@ -65,7 +64,7 @@ Requires target station. This can be either passed as a parameter when running t
 > python3 aprs_sender.py
 Station: KC1QBY-1
 ```
-#### Example
+### Example
 ```
 > python3 aprs_query.py
 Station: KC1QBY-1
@@ -83,7 +82,7 @@ phg 2040
 comment RPi Zero + Direwolf iGate
 path TCPIP*,qAC,T2MCI
 ```
-#### Description (from aprs.fi docs)
+### Description (from aprs.fi docs)
 * class - class of station identifier (a: APRS, i: AIS, w: Web ...)
 * name - name of station, object, item or vessel
 * showname - displayed name of station (may differ from the unique name)
@@ -104,16 +103,16 @@ path TCPIP*,qAC,T2MCI
 * status - Last status message transmitted by station
 * status_lasttime - The time when the last status message was received
 Please respect [aprs.fi terms](https://aprs.fi/page/api) especially with regards to query rates.
-### aprs_msg_check
+## aprs_msg_check
 Query aprs.fi for the 10 most recent messages sent to a station. This can be either passed as a parameter when running the script or via an interactive input.
-#### Usage
+### Usage
 ```
 > python3 aprs_msg_check.py KC1QBY-1
 
 > python3 aprs_sender.py
 Station: KC1QBY-1
 ```
-#### Example
+### Example
 ```
 > python3 aprs_msg_check.py
 Station: KC1QBY-1
@@ -122,7 +121,7 @@ Displaying 2 most recent messages
 {'messageid': '82180175', 'time': '2022-09-19 07:07:50', 'srccall': 'KC1QBY-1', 'dst': 'KC1QBY-1', 'message': 'test message'}
 {'messageid': '82178723', 'time': '2022-09-19 05:48:34', 'srccall': 'KC1QBY-1', 'dst': 'KC1QBY-1', 'message': 'test message 2'}
 ```
-#### Description (from aprs.fi docs)
+### Description (from aprs.fi docs)
 * messageid - an incrementing id of the message (will wrap to 0 some day)
 * time - Time when the message was received
 * srccall - Source callsign
