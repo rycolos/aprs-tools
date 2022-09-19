@@ -1,5 +1,22 @@
 # APRS-tools
 ## Installation
+Using git:
+```
+cd
+git clone https://github.com/rycolos/aprs-tools.git
+cd aprs-tools
+```
+Using wget:
+```
+cd
+wget https://github.com/rycolos/aprs-tools/main.zip
+unzip main.zip
+cd aprs-tools
+```
+Install dependencies:
+```
+pip install -r requirements.txt
+```
 ## Using aprs-tools
 ### Configuration
 Rename `config.yaml.template` to `config.yaml` and add the relevant values.
