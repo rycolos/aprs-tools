@@ -31,26 +31,26 @@ Send a message via an APRS-IS server to a destination APRS station.
 ### Usage
 Requires destination state and message. These can be either passed as a parameter when running the script or via interactive input.
 ```
-> python3 aprs_sender.py KC1QBY-1 test message
+> python3 aprs_sender.py CALLSIGN test message
 
 > python3 aprs_sender.py
-Destination Station: KC1QBY-1
+Destination Station: CALLSIGN
 Message: test message
 ```
 ### Example
 ```
 > python3 aprs_sender.py
-Destination Station: KC1QBY-1
+Destination Station: CALLSIGN
 Message: test message
 
 Packet to be sent:
  
 user KC1QBY-1 pass XXXXXX vers aprs_tools 1.0
-KC1QBY-1>APRS,TCPIP::KC1QBY-1 :test message
+KC1QBY-1>APRS,TCPIP::CALLSIGN :test message
 
 Received: # aprsc 2.1.11-g80df3b4
 
-Received: # logresp KC1QBY-1 verified, server T2VAN
+Received: # logresp CALLSIGN verified, server T2VAN
 
 Connection Closed
 ```
@@ -59,24 +59,24 @@ Query aprs.fi for basic station information.
 ### Usage
 Requires target station. This can be either passed as a parameter when running the script or via an interactive input.
 ```
-> python3 aprs_query.py KC1QBY-1
+> python3 aprs_query.py CALLSIGN
 
 > python3 aprs_sender.py
-Station: KC1QBY-1
+Station: CALLSIGN
 ```
 ### Example
 ```
 > python3 aprs_query.py
-Station: KC1QBY-1
+Station: CALLSIGN
 class a
-name KC1QBY-1
+name CALLSIGN
 type l
 time 2022-09-08 06:45:59
 lasttime 2022-09-19 06:52:13
 lat 44.28683
 lng -70.524
 symbol R&
-srccall KC1QBY-1
+srccall CALLSIGN
 dstcall APDW16
 phg 2040
 comment RPi Zero + Direwolf iGate
@@ -107,19 +107,19 @@ Please respect [aprs.fi terms](https://aprs.fi/page/api) especially with regards
 Query aprs.fi for the 10 most recent messages sent to a station. This can be either passed as a parameter when running the script or via an interactive input.
 ### Usage
 ```
-> python3 aprs_msg_check.py KC1QBY-1
+> python3 aprs_msg_check.py CALLSIGN
 
 > python3 aprs_sender.py
-Station: KC1QBY-1
+Station: CALLSIGN
 ```
 ### Example
 ```
 > python3 aprs_msg_check.py
-Station: KC1QBY-1
+Station: CALLSIGN
 Displaying 2 most recent messages 
 
-{'messageid': '82180175', 'time': '2022-09-19 07:07:50', 'srccall': 'KC1QBY-1', 'dst': 'KC1QBY-1', 'message': 'test message'}
-{'messageid': '82178723', 'time': '2022-09-19 05:48:34', 'srccall': 'KC1QBY-1', 'dst': 'KC1QBY-1', 'message': 'test message 2'}
+{'messageid': '82180175', 'time': '2022-09-19 07:07:50', 'srccall': 'CALLSIGN', 'dst': 'CALLSIGN, 'message': 'test message'}
+{'messageid': '82178723', 'time': '2022-09-19 05:48:34', 'srccall': 'CALLSIGN', 'dst': 'CALLSIGN', 'message': 'test message 2'}
 ```
 ### Description (from aprs.fi docs)
 * messageid - an incrementing id of the message (will wrap to 0 some day)
