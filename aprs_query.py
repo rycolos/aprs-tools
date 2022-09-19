@@ -1,7 +1,7 @@
-import datetime, json, os, requests, sys, yaml
+import datetime, json, requests, sys, yaml
 
 """
-todo - error checking
+todo:
 """
 
 config_path = 'config.yaml'
@@ -9,43 +9,53 @@ url = 'https://api.aprs.fi/api/get?'
 
 
 def get_inputs():
-    """
-    get inputs - target station
-    """
+    #Get inputs. Check for cli params; if not found, take input.
     if len(sys.argv) < 2:
-        dest = input("Station: ")
+        dest = input('Station: ')
     else:
         dest = sys.argv[1]
     return dest
 
 
 def config_parse(config_path):
-    """
-    parse yaml config file for api key
-    """
-    if not os.path.isfile(config_path): 
-        sys.exit("Error: Config file " + config_path + "is missing. Please create it.")
-    with open(config_path, 'r') as file:
-        config_file = yaml.safe_load(file)
-    api_key = config_file['aprs_fi']['api_key']
+    #Parse yaml config file for api key.
+    try:
+        with open(config_path, 'r') as file:
+            config_file = yaml.safe_load(file)
+    except FileNotFoundError as e:
+        print(f'File {config_path} not found. Exiting.')
+        sys.exit(1)
+    try:    
+        api_key = config_file['aprs_fi']['api_key']
+    except KeyError as e:
+        print(f'Config missing key: {e}. Exiting.')
+        sys.exit(1)
     return api_key
 
 
 def api_read(url, dest, api_key):
-    """
-    construct query params, read from aprs.fi api
-    """
-    params = {'name': dest, 'what': 'loc', 'apikey': api_key, 'format': 'json'}
-    resp = requests.get(url=url, params=params)
+    #Construct query params, read from aprs.fi api.
+    params = {
+        'name': dest, 
+        'what': 'loc', 
+        'apikey': api_key, 
+        'format': 'json'
+    }
+    try:
+        resp = requests.get(url=url, params=params)
+    except requests.exceptions.RequestException as e:
+        print(f'API error: {e}')
+        sys.exit(1)
     data = resp.json()
     entries = data.get('entries')
+    if entries == None or entries == []:
+        print('Station not found or bad API credentials.')
+        sys.exit(1)
     return entries
 
 
 def tz_convert(entries):
-    """
-    convert unix ts to local tz
-    """
+    #Convert unix ts to local tz.
     ts_time = int(entries[0].get('time'))
     entries[0]['time'] = datetime.datetime.fromtimestamp(ts_time).strftime('%Y-%m-%d %H:%M:%S')
 
@@ -63,5 +73,5 @@ def main():
         print(key,value)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
