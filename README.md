@@ -28,8 +28,26 @@ usage
 ```
 example
 ```
-#### Description
-*
+#### Description (from aprs.fi docs)
+* class - class of station identifier (a: APRS, i: AIS, w: Web ...)
+* name - name of station, object, item or vessel
+* showname - displayed name of station (may differ from the unique name)
+* type - type of target: a for AIS, l for APRS station, i for APRS item, o for APRS object, w for weather station
+* time - the time when the target first reported this (current) position (the time of arrival at current * coordinates)
+* lasttime - the time when the target last reported this (current) position
+* lat - latitude in decimal degrees, north is positive
+* lng - longitude in decimal degrees, east is positive
+* course - Course over ground / COG, in degrees
+* speed - Speed, in kilometers per hour
+* altitude - Altitude, in meters
+* symbol - APRS symbol table and code
+* srccall - Source callsign - either APRS source callsign or AIS vessel callsign
+* dstcall - APRS packet destination callsign
+* comment - APRS comment or AIS destination and estimated time of arrival
+* path - APRS or AIS packet path
+* phg - APRS PHG value
+* status - Last status message transmitted by station
+* status_lasttime - The time when the last status message was received
 Please respect [aprs.fi terms](https://aprs.fi/page/api) especially with regards to query rates.
 ### aprs_msg_check
 Query aprs.fi for the 10 most recent messages sent to a station.
@@ -41,8 +59,12 @@ usage
 ```
 example
 ```
-#### Description
-*
+#### Description (from aprs.fi docs)
+* messageid - an incrementing id of the message (will wrap to 0 some day)
+* time - Time when the message was received
+* srccall - Source callsign
+* dst - APRS message destination
+* message - The message contents
 Please respect [aprs.fi terms](https://aprs.fi/page/api) especially with regards to query rates.
 ## Credits 
 * <https://www.aprs-is.net/Connecting.aspx> for technical spec.
