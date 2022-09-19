@@ -1,17 +1,17 @@
 # APRS-tools
 ## Installation
-Requires python3.
+Requires Python 3. See requirements.txt for other dependencies.
 
 Using git:
 ```
 cd
-git clone <https://github.com/rycolos/aprs-tools.git>
+git clone https://github.com/rycolos/aprs-tools.git
 cd aprs-tools
 ```
 Using wget:
 ```
 cd
-wget <https://github.com/rycolos/aprs-tools/archive/refs/heads/main.zip>
+wget https://github.com/rycolos/aprs-tools/archive/refs/heads/main.zip
 unzip main.zip
 cd aprs-tools
 ```
