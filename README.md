@@ -48,8 +48,8 @@ Message: test message
 
 Packet to be sent:
  
-user KC1QBY-1 pass XXXXXX vers aprs_tools 1.0
-KC1QBY-1>APRS,TCPIP::CALLSIGN :test message
+user CALLSIGN pass XXXXXX vers aprs_tools 1.0
+CALLSIGN>APRS,TCPIP::CALLSIGN :test message
 
 Received: # aprsc 2.1.11-g80df3b4
 
