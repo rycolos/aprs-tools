@@ -1,5 +1,5 @@
 # APRS-tools
-The [Automated Packet Reporting System (APRS)](http://www.aprs.org) is a packet radio mode for amateur operators that enables the transmissions and reception of location, weather, alerts, bulletins, messages and other data through digitally encoded signals, predominantly on the VHF bands.
+The [Automated Packet Reporting System (APRS)](http://www.aprs.org) is a packet radio mode for amateur operators that enables the transmission and reception of location, weather, alerts, bulletins, messages and other data through digitally encoded signals, predominantly on the VHF bands.
 
 aprs-tools is a small collection of scripts that enable cli input and output from the [Automatic Packet Reporting System-Internet Service (APRS-IS)](http://www.aprs-is.net). Functions include: (1) enabling a station to send a message via an APRS-IS server directly to another station; (2) querying a station for its latest location and other station data; and (3) querying a station's most recent 10 messages.
 ## Installation
