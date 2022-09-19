@@ -11,22 +11,58 @@ Rename `config.yaml.template` to `config.yaml` and add the relevant values.
 ### aprs-sender
 Send a message via an APRS-IS server to a destination APRS station.
 #### Usage
+Requires destination state and message. These can be either passed as a parameter when running the script or via interactive input.
 ```
-usage
+> python3 aprs_sender.py KC1QBY-1 test message
+
+> python3 aprs_sender.py
+Destination Station: KC1QBY-1
+Message: test message
 ```
 #### Example
 ```
-example
+> python3 aprs_sender.py
+Destination Station: KC1QBY-1
+Message: test message
+
+Packet to be sent:
+ 
+user KC1QBY-1 pass XXXXXX vers aprs_tools 1.0
+KC1QBY-1>APRS,TCPIP::KC1QBY-1 :test message
+
+Received: # aprsc 2.1.11-g80df3b4
+
+Received: # logresp KC1QBY-1 verified, server T2VAN
+
+Connection Closed
 ```
 ### aprs_query
 Query aprs.fi for basic station information.
 #### Usage
+Requires target station. This can be either passed as a parameter when running the script or via an interactive input.
 ```
-usage
+> python3 aprs_query.py KC1QBY-1
+
+> python3 aprs_sender.py
+Station: KC1QBY-1
 ```
 #### Example
 ```
-example
+> python3 aprs_query.py
+Station: KC1QBY-1
+class a
+name KC1QBY-1
+type l
+time 2022-09-08 06:45:59
+lasttime 2022-09-19 06:52:13
+lat 44.28683
+lng -70.524
+symbol R&
+srccall KC1QBY-1
+dstcall APDW16
+phg 2040
+comment RPi Zero + Direwolf iGate
+path TCPIP*,qAC,T2MCI
 ```
 #### Description (from aprs.fi docs)
 * class - class of station identifier (a: APRS, i: AIS, w: Web ...)
@@ -50,14 +86,22 @@ example
 * status_lasttime - The time when the last status message was received
 Please respect [aprs.fi terms](https://aprs.fi/page/api) especially with regards to query rates.
 ### aprs_msg_check
-Query aprs.fi for the 10 most recent messages sent to a station.
+Query aprs.fi for the 10 most recent messages sent to a station. This can be either passed as a parameter when running the script or via an interactive input.
 #### Usage
 ```
-usage
+> python3 aprs_msg_check.py KC1QBY-1
+
+> python3 aprs_sender.py
+Station: KC1QBY-1
 ```
 #### Example
 ```
-example
+> python3 aprs_msg_check.py
+Station: KC1QBY-1
+Displaying 2 most recent messages 
+
+{'messageid': '82180175', 'time': '2022-09-19 07:07:50', 'srccall': 'KC1QBY-1', 'dst': 'KC1QBY-1', 'message': 'test message'}
+{'messageid': '82178723', 'time': '2022-09-19 05:48:34', 'srccall': 'KC1QBY-1', 'dst': 'KC1QBY-1', 'message': 'test message 2'}
 ```
 #### Description (from aprs.fi docs)
 * messageid - an incrementing id of the message (will wrap to 0 some day)
