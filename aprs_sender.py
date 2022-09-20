@@ -14,7 +14,7 @@ def get_inputs():
         message = input('Message: ')
     else:
         dest = sys.argv[1]
-        message = sys.argv[2]
+        message = ' '.join(sys.argv[2:])
     return dest, message
 
 
