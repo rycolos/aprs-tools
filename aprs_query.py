@@ -1,10 +1,8 @@
-import datetime, json, requests, sys, yaml
+import datetime, json, os, requests, sys, yaml
 
-"""
-todo:
-"""
+script_dir = os.path.dirname(__file__)
+config_path = f'{script_dir}/config.yaml'
 
-config_path = 'config.yaml'
 url = 'https://api.aprs.fi/api/get?'
 
 

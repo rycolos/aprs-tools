@@ -1,11 +1,7 @@
-import socket, sys, textwrap, yaml
+import os, socket, sys, textwrap, yaml
 
-"""
-todo:
-"""
-
-config_path = 'config.yaml'
-
+script_dir = os.path.dirname(__file__)
+config_path = f'{script_dir}/config.yaml'
 
 def get_inputs():
     #Get inputs. Check for cli params; if not found, take input.
